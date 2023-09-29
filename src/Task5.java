@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
@@ -27,46 +26,56 @@ class Shipment {
     }
 
     public static boolean isViable(String departure) {
-        boolean v = false;
+
         for (String d : DeparturePoint.getCities()) {
             if (departure.equals(d)) {
-                v = true;
-                break;
+                return true;
             }
         }
-        return v;
+
+        return false;
     }
 
     public static String getType(double w, double v, String departure) {
         if (w <= 1 && v <= 1) {
             return "bicycle";
-        } else if (w <= 10 && v <= 3 && isViable(departure)) {
+        }
+        else if (w <= 10 && v <= 3 && isViable(departure)) {
             return "van";
-        } else if (w <= 20 && v <= 5 && isViable(departure)) {
+        }
+        else if (w <= 20 && v <= 5 && isViable(departure)) {
             return "truck";
-        } else if (w <= 50 && v <= 7 && isViable(departure)) {
+        }
+        else if (w <= 50 && v <= 7 && isViable(departure)) {
             return "train";
-        } else {
+        }
+        else {
             return null;
         }
     }
 }
 
 class Customer {
-    @org.jetbrains.annotations.Nullable
     public static Shipment sendPackage() {
         Scanner scan = new Scanner(System.in);
+
         System.out.print("Enter the departure point: ");
         String departure = scan.nextLine();
+
         System.out.print("Enter the receive point: ");
         String receive = scan.nextLine();
+
         System.out.print("Enter the item's name: ");
         String n = scan.nextLine();
+
         System.out.print("Enter the item's weight (kg): ");
         double w = Double.parseDouble(scan.nextLine());
+
         System.out.print("Enter the item's volume (m^3): ");
         double v = Double.parseDouble(scan.nextLine());
+
         String s = Shipment.getType(w, v, departure);
+
         if (s != null) {
             System.out.println("Your item will be delivered by a " + s);
             return new Shipment(new Item(n, w, v), new DeparturePoint(departure), new ReceivePoint(receive));
@@ -81,12 +90,14 @@ class Customer {
         if (shipments.length != 0) {
             int i = 0;
             System.out.println("Select which shipment should be canceled: ");
+
             for (Shipment s : shipments) {
                 if (s != null) {
                     System.out.println("#" + (i + 1) + " " + s.item.name + " (" + s.departurePoint.name + " - " + s.receivePoint.name + ") weight: " + s.item.weight + "kg volume: " + s.item.volume + "m^3");
                 }
                 i++;
             }
+
             System.out.print("Choose the number of the shipment to delete it: ");
             Scanner scan = new Scanner(System.in);
             int n = parseInt(scan.nextLine());
@@ -99,13 +110,11 @@ class Customer {
 }
 
 class DeparturePoint {
-    static String[] cities = {"Lviv", "Kyiv", "Odesa", "Kharkiv"};
     String name;
-
+    static String[] cities = {"Lviv", "Kyiv", "Odesa", "Kharkiv"};
     public DeparturePoint(String name) {
         this.name = name;
     }
-
     public static String[] getCities() {
         return cities;
     }
@@ -113,7 +122,6 @@ class DeparturePoint {
 
 class ReceivePoint {
     String name;
-
     public ReceivePoint(String name) {
         this.name = name;
     }
@@ -127,19 +135,24 @@ public class Task5 {
             Scanner scan = new Scanner(System.in);
             System.out.print("1 - Create new shipments, 2 - remove shipments, anything else - exit: ");
             k = scan.nextLine();
-            if (Objects.equals(k, "1")) {
-                System.out.print("Enter the number of shipments: ");
-                int n = parseInt(scan.nextLine());
-                shipments = new Shipment[n];
-                for (int i = 0; i < n; i++) {
-                    shipments[i] = (Customer.sendPackage());
-                }
-            }
-            else if (Objects.equals(k, "2")) {
-                Customer.cancelPackage(shipments);
-            }
-            else {
-                break;
+
+            switch (k) {
+                case "1":
+                    System.out.print("Enter the number of shipments: ");
+                    int n = parseInt(scan.nextLine());
+                    shipments = new Shipment[n];
+
+                    for (int i = 0; i < n; i++) {
+                        shipments[i] = (Customer.sendPackage());
+                    }
+                    break;
+
+                case "2":
+                    Customer.cancelPackage(shipments);
+                    break;
+
+                default:
+                    return;
             }
         }
     }

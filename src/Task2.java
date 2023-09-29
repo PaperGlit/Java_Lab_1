@@ -47,6 +47,7 @@ public class Task2 {
         for (String s: strings) {
             System.out.print(s + ' ');
         }
+
         System.out.println();
     }
 }

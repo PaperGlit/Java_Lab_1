@@ -18,7 +18,9 @@ public class Task3 {
 
     // Local : is a digit, letter or a valid symbol and has no more than 64 characters and no 2 or more '.'s next to each other
     // Has '@' symbol to divide the local and domain parts
-    // Domain : each part is no longer than 63 characters, has at least a single letter for each '.', while only having letters, digits and '-'s as long as they aren't the first or last character
+    // Domain : has no more than 253 characters, each part is no longer than 63 characters, has at least a single letter for each '.',
+    // while only having letters, digits and '-'s as long as they aren't the first or last character
+
     public static boolean validateEmail() {
 
         System.out.print("Write an email: ");
@@ -62,6 +64,7 @@ public class Task3 {
                 return false;
             }
         }
+
         catch(Exception e) {
             return false;
         }
@@ -74,7 +77,7 @@ public class Task3 {
             char cm1 = email.charAt(i-1);
             char cf = ' ';
 
-            if (cm1 == '@' || cm1 == '.') {
+            if (cm1 == '.') {
                 cf = c;
             }
 
@@ -96,6 +99,7 @@ public class Task3 {
                 if (isLetter(c)) {
                     hasLetter = true;
                 }
+
                 j++;
             }
 
