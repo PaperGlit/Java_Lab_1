@@ -16,14 +16,18 @@ public class Task4 {
 
         return m;
     }
+
     private static void print(int[][] r) {
+
         for (int[] ints : r) {
             for (int j = 0; j < r[0].length; j++) {
                 System.out.print(ints[j] + "  ");
             }
+
             System.out.println();
         }
     }
+
     public static void multiply() {
 
         Scanner scan = new Scanner(System.in);
