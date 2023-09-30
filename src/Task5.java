@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.Integer.parseInt;
 
 class Item {
@@ -101,7 +100,13 @@ class Customer {
             System.out.print("Choose the number of the shipment to delete it: ");
             Scanner scan = new Scanner(System.in);
             int n = parseInt(scan.nextLine());
-            shipments[n - 1] = null;
+            try {
+                shipments[n - 1] = null;
+                System.out.println("The shipment #" + n + " was successfully deleted.");
+            }
+            catch (Exception e) {
+                System.out.println("Error: this shipment doesn't exist");
+            }
         }
         else {
             System.out.println("There are no shipments en route right now.");

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.Character.isDigit;
 import static java.lang.Character.isLetter;
 
