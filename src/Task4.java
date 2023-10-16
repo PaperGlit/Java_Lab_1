@@ -32,14 +32,22 @@ public class Task4 {
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("Enter matrix #1's column count and matrix #2's row count: ");
-        int col1 = Integer.parseInt(scan.nextLine());
-
         System.out.print("Enter matrix #1's row count: ");
         int row1 = Integer.parseInt(scan.nextLine());
 
+        System.out.print("Enter matrix #1's column count: ");
+        int col1 = Integer.parseInt(scan.nextLine());
+
+        System.out.print("Enter matrix #2's row count: ");
+        int row2 = Integer.parseInt(scan.nextLine());
+
         System.out.print("Enter matrix #2's column count: ");
         int col2 = Integer.parseInt(scan.nextLine());
+
+        if (col1 != row2) {
+            System.out.println("Error: incompatible matrices detected");
+            return;
+        }
 
         System.out.print("Enter the minimum value: ");
         int min = Integer.parseInt(scan.nextLine());
@@ -48,7 +56,7 @@ public class Task4 {
         int max = Integer.parseInt(scan.nextLine());
 
         int[][] m1 = generate(row1, col1, min, max);
-        int[][] m2 = generate(col1, col2, min, max);
+        int[][] m2 = generate(row2, col2, min, max);
         int[][] r = new int[row1][col2];
 
         System.out.println("\nMatrix #1:\n");

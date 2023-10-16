@@ -28,7 +28,7 @@ public class Task3 {
 
 
         int i = 0, j = 0, k = 0;
-        boolean hasLetter = false;
+        boolean hasLetter = false, isCorrectDomain = false;
 
         //Local part check
 
@@ -77,6 +77,9 @@ public class Task3 {
             char cf = ' ';
 
             if (cm1 == '.'  || cm1 == '@') {
+                if (cm1 == '.') {
+                    isCorrectDomain = true;
+                }
                 cf = c;
             }
 
@@ -106,6 +109,6 @@ public class Task3 {
             i++;
         }
 
-        return true;
+        return isCorrectDomain;
     }
 }
