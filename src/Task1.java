@@ -40,7 +40,13 @@ public class Task1 {
                     }
                 }
 
-                num1 = Double.parseDouble(temp.toString());
+                if (temp.isEmpty()) {
+                    System.out.println("Error : no first number was detected");
+                    return;
+                }
+                else {
+                    num1 = Double.parseDouble(temp.toString());
+                }
 
                 j = 0;
                 num = new char[256];
