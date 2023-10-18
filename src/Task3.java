@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import static java.lang.Character.isDigit;
 import static java.lang.Character.isLetter;
 
@@ -20,12 +19,7 @@ public class Task3 {
     // Domain : has no more than 253 characters, each part is no longer than 63 characters, has at least a single letter for each '.',
     // while only having letters, digits and '-'s as long as they aren't the first or last character
 
-    public static boolean validateEmail() {
-
-        System.out.print("Write an email: ");
-        Scanner scan = new Scanner(System.in);
-        String email = scan.nextLine();
-
+    public static boolean validateEmail(final String email) {
 
         int i = 0, j = 0, k = 0;
         boolean hasLetter = false, isCorrectDomain = false;

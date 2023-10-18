@@ -1,8 +1,9 @@
 package T5;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class DeparturePoint {
-    String name;
-    static String[] cities = {"Lviv", "Kyiv", "Odesa", "Kharkiv"};
+    private final static String[] cities = {"Lviv", "Kyiv", "Odesa", "Kharkiv"};
+    private final String name;
 
     public DeparturePoint(String name) {
         this.name = name;
@@ -10,5 +11,9 @@ public class DeparturePoint {
 
     public static String[] getCities() {
         return cities;
+    }
+
+    public String getName() {
+        return name;
     }
 }

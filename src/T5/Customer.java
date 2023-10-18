@@ -44,7 +44,7 @@ public class Customer {
 
             for (Shipment s : shipments) {
                 if (s != null) {
-                    System.out.println("#" + (i + 1) + " " + s.item.name + " (" + s.departurePoint.name + " - " + s.receivePoint.name + ") weight: " + s.item.weight + "kg volume: " + s.item.volume + "m^3");
+                    System.out.println("#" + (i + 1) + " " + s.getItem().getName() + " (" + s.getDeparturePoint().getName() + " - " + s.getReceivePoint().getName() + ") weight: " + s.getItem().getWeight() + "kg volume: " + s.getItem().getVolume() + "m^3");
                 }
                 i++;
             }

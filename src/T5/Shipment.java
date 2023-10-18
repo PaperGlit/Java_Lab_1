@@ -1,14 +1,27 @@
 package T5;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class Shipment {
-    Item item;
-    ReceivePoint receivePoint;
-    DeparturePoint departurePoint;
+    private final Item item;
+    private final ReceivePoint receivePoint;
+    private final DeparturePoint departurePoint;
 
     public Shipment(Item item, DeparturePoint departurePoint, ReceivePoint receivePoint) {
         this.item = item;
         this.departurePoint = departurePoint;
         this.receivePoint = receivePoint;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public ReceivePoint getReceivePoint() {
+        return receivePoint;
+    }
+
+    public DeparturePoint getDeparturePoint() {
+        return departurePoint;
     }
 
     public static boolean isViable(String departure) {

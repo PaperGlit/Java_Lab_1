@@ -20,11 +20,13 @@ public class Main {
                     System.out.println();
                     break;
                 case "3":
-                    if (Task3.validateEmail()) {
+                    System.out.print("Write an email: ");
+                    String email = scan.nextLine();
+                    if (Task3.validateEmail(email)) {
                         System.out.println("The email is valid!\n");
                     }
                     else {
-                    System.out.println("The email is invalid!\n");
+                        System.out.println("The email is invalid!\n");
                     }
                     break;
                 case "4":
